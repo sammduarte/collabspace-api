@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CreateUserUseCase } from "./createUserUseCase";
-import { IRequestCreateUser } from "../../dto/users";
+import { IRequestCreateUser } from "@modules/users/dto/users";
 
 class CreateUserController {
   async handle(request: Request, response: Response) {
