@@ -1,4 +1,4 @@
-import { prisma } from "@/libs/prismaClient";
+import { prisma } from "@libs/prismaClient";
 
 import { ICreateUser, IUser } from "@modules/users/dto/users";
 import { IUsersRepositories } from "@modules/users/iRepositories/IUsersRepositories";

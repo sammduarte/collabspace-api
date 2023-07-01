@@ -1,16 +1,19 @@
+import { inject, injectable } from "tsyringe";
 import { v4 } from "uuid";
 
-import { encryptPassword } from "@/utils/bcrypt";
+import { encryptPassword } from "@utils/bcrypt";
 import { IRequestCreateUser } from "@modules/users/dto/users";
-import { UserRepository } from "@modules/users/repositories/UserRepository";
-import { telephoneFormat } from "@/utils/formatData";
+import { telephoneFormat } from "@utils/formatData";
+import { AppResponse } from "@helpers/responseParser";
+import { AppError } from "@helpers/errorsHandler";
+import { IUsersRepositories } from "@modules/users/iRepositories/IUsersRepositories";
 
+@injectable()
 class CreateUserUseCase {
-  private userRepository: UserRepository;
-
-  constructor(userRepository = new UserRepository()) {
-    this.userRepository = userRepository;
-  }
+  constructor(
+    @inject("UserRepository")
+    private userRepository: IUsersRepositories
+  ) {}
 
   async execute({
     name,
@@ -20,9 +23,11 @@ class CreateUserUseCase {
     confirmPassword,
     telephone,
     birthDate,
-  }: IRequestCreateUser): Promise<any> {
+  }: IRequestCreateUser): Promise<AppResponse> {
     if (password !== confirmPassword) {
-      return { message: "As senhas não coincidem!" };
+      throw new AppError({
+        message: "As senhas não coincidem!",
+      });
     }
 
     if (
@@ -30,17 +35,23 @@ class CreateUserUseCase {
         /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
       )
     ) {
-      return { message: "Esta senha é muito fraca!" };
+      throw new AppError({
+        message: "Esta senha é muito fraca!",
+      });
     }
 
     if (email !== confirmEmail) {
-      return { message: "Os e-mails não coincidem!" };
+      throw new AppError({
+        message: "Os e-mails não coincidem!",
+      });
     }
 
     const listUserByEmail = await this.userRepository.listByEmail(email);
 
     if (listUserByEmail) {
-      return { message: "Usuário já cadastrado!" };
+      throw new AppError({
+        message: "Usuário já cadastrado!",
+      });
     }
 
     const passwordHash = await encryptPassword(password);
@@ -54,9 +65,17 @@ class CreateUserUseCase {
       password: passwordHash.hash,
     });
 
-    return {
-      createUser,
-    };
+    return new AppResponse({
+      statusCode: 201,
+      message: "Usuário criado com sucesso!",
+      data: {
+        id: createUser.id,
+        name: createUser.name,
+        email: createUser.email,
+        telephone: createUser.telephone,
+        birthDate: createUser.birth_date,
+      },
+    });
   }
 }
 

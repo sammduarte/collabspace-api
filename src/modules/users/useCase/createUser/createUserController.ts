@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
+
 import { CreateUserUseCase } from "./createUserUseCase";
 import { IRequestCreateUser } from "@modules/users/dto/users";
 
@@ -14,7 +16,7 @@ class CreateUserController {
       birthDate,
     } = request.body as IRequestCreateUser;
 
-    const createUserCase = new CreateUserUseCase();
+    const createUserCase = container.resolve(CreateUserUseCase);
 
     const result = await createUserCase.execute({
       name,
@@ -26,7 +28,7 @@ class CreateUserController {
       birthDate,
     });
 
-    response.json(result);
+    response.status(result.statusCode).json(result);
   }
 }
 
