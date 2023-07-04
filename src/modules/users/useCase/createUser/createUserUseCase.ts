@@ -1,18 +1,22 @@
 import { inject, injectable } from "tsyringe";
-import { v4 } from "uuid";
 
-import { encryptPassword } from "@utils/bcrypt";
 import { IRequestCreateUser } from "@modules/users/dto/users";
 import { telephoneFormat } from "@utils/formatData";
 import { AppResponse } from "@helpers/responseParser";
 import { AppError } from "@helpers/errorsHandler";
 import { IUsersRepositories } from "@modules/users/iRepositories/IUsersRepositories";
+import { IUuidProvider } from "@shared/container/providers/uuidProvider/IUuidProvider";
+import { IBcryptProvider } from "@shared/container/providers/bcryptProvider/IBcryptProvider";
 
 @injectable()
 class CreateUserUseCase {
   constructor(
     @inject("UserRepository")
-    private userRepository: IUsersRepositories
+    private userRepository: IUsersRepositories,
+    @inject("UuidProvider")
+    private uuidProvider: IUuidProvider,
+    @inject("BcryptProvider")
+    private bcryptProvider: IBcryptProvider
   ) {}
 
   async execute({
@@ -54,10 +58,10 @@ class CreateUserUseCase {
       });
     }
 
-    const passwordHash = await encryptPassword(password);
+    const passwordHash = await this.bcryptProvider.encryptPassword(password);
 
     const createUser = await this.userRepository.create({
-      id: v4(),
+      id: this.uuidProvider.createUUID(),
       name,
       email,
       telephone: telephoneFormat(telephone),
