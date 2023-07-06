@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { CreateUserController } from "@modules/users/useCase/createUser/createUserController";
-import { UpdateUserController } from "@modules/users/useCase/updateUser/updateUserController";
-import { InactivateUserController } from "@modules/users/useCase/inactivateUser/inactivateUserController";
+import { CreateUserController } from "@modules/users/useCases/createUser/createUserController";
+import { UpdateUserController } from "@modules/users/useCases/updateUser/updateUserController";
+import { InactivateUserController } from "@modules/users/useCases/inactivateUser/inactivateUserController";
 
 const userRoutes = Router();
 
