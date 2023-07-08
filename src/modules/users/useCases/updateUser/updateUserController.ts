@@ -1,4 +1,4 @@
-import { IRequestUpdateUser } from "@modules/users/dto/users";
+import { IRequestUpdateUser } from "@modules/users/dtos/users";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { UpdateUserUseCase } from "./updateUserUseCase";
