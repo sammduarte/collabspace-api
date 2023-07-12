@@ -1,6 +1,6 @@
 interface IPost {
   id: string;
-  user_id?: string;
+  user_id: string;
   content: string;
   tags: string | null;
   visibility: number;
@@ -21,6 +21,19 @@ interface ICreatePost {
   visibility?: number;
 }
 
+interface iRequestUpdatePost {
+  content: string;
+  tags: string;
+  visibility: number;
+}
+
+interface IUpdatePost {
+  id: string;
+  content: string;
+  tags: string;
+  visibility: number;
+}
+
 interface IListAllPosts {
   id: string;
   content: string;
@@ -34,4 +47,11 @@ interface IListAllPosts {
   };
 }
 
-export { IPost, ICreatePost, IRequestCreatePost, IListAllPosts };
+export {
+  IPost,
+  IRequestCreatePost,
+  ICreatePost,
+  iRequestUpdatePost,
+  IUpdatePost,
+  IListAllPosts,
+};
