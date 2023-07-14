@@ -33,7 +33,6 @@ class PostRepository implements IPostsRepositories {
       take: limit,
       select: {
         id: true,
-        user_id: false,
         content: true,
         tags: true,
         visibility: true,
@@ -43,6 +42,20 @@ class PostRepository implements IPostsRepositories {
             id: true,
             name: true,
             avatar_url: true,
+          },
+        },
+        comments: {
+          select: {
+            id: true,
+            content: true,
+            commented_at: true,
+            users: {
+              select: {
+                id: true,
+                name: true,
+                avatar_url: true,
+              },
+            },
           },
         },
       },
