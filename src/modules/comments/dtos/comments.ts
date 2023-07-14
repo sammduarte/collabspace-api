@@ -3,7 +3,7 @@ interface IComment {
   post_id: string;
   user_id: string;
   content: string;
-  comented_at: Date;
+  commented_at: Date;
 }
 
 interface IRequestCreateComment {
@@ -17,4 +17,19 @@ interface ICreateComment {
   content: string;
 }
 
-export { IComment, ICreateComment, IRequestCreateComment };
+interface IRequestUpdateComment {
+  content: string;
+}
+
+interface IUpdateComment {
+  id: string;
+  content: string;
+}
+
+export {
+  IComment,
+  ICreateComment,
+  IRequestCreateComment,
+  IRequestUpdateComment,
+  IUpdateComment,
+};
