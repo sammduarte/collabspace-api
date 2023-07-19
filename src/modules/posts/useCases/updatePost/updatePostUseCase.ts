@@ -1,17 +1,17 @@
 import { inject, injectable } from "tsyringe";
 import { IPostsRepositories } from "@modules/posts/iRepositories/IPostsRepositories";
 import { IUuidProvider } from "@shared/container/providers/uuidProvider/IUuidProvider";
-import { iRequestUpdatePost } from "@modules/posts/dtos/posts";
+import { IRequestUpdatePost } from "@modules/posts/dtos/posts";
 import { AppResponse } from "@helpers/responseParser";
 import { AppError } from "@helpers/errorsHandler";
 
-interface IRequest extends iRequestUpdatePost {
+interface IRequest extends IRequestUpdatePost {
   usrId: string;
   id: string;
 }
 
 @injectable()
-class UpdadePostUseCase {
+class UpdatePostUseCase {
   constructor(
     @inject("PostRepository")
     private postRepository: IPostsRepositories,
@@ -60,4 +60,4 @@ class UpdadePostUseCase {
   }
 }
 
-export { UpdadePostUseCase };
+export { UpdatePostUseCase };

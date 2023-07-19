@@ -41,12 +41,13 @@ app.use(
 
 export { app };
 
-/* REQUEST -> 
-      ROUTES -> 
-        MIDDLEWARE -> 
-          CONTROLLER(RESPONSE) <-> 
-            USECASE <-> 
-              REPOSITORY <-> 
-                PRISMA <-> 
-                  DATABASE
+/* 
+  REQUEST -> 
+    ROUTES -> 
+      MIDDLEWARE ->
+        CONTROLLER(RESPONSE) <-> 
+          USECASE <-> 
+            REPOSITORY <-> 
+              PRISMA <-> 
+                DATABASE
 */

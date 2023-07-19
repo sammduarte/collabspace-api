@@ -7,7 +7,6 @@ class AppError {
   public readonly statusCode: number;
   public readonly result: string;
   public readonly message: string | undefined;
-  public readonly data: any | undefined;
 
   constructor({ statusCode = 400, message }: IAppError) {
     this.statusCode = statusCode;

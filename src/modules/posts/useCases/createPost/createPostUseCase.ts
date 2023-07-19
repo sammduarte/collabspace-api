@@ -29,6 +29,7 @@ class CreatePostUseCase {
         message: "User ID é inválido!",
       });
     }
+
     const createPost = await this.postRepository.create({
       id: this.uuidProvider.createUUID(),
       userId,

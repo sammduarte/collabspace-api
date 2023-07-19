@@ -40,7 +40,7 @@ class CreateUserUseCase {
       )
     ) {
       throw new AppError({
-        message: "Esta senha é muito fraca!",
+        message: "Senha fraca!",
       });
     }
 

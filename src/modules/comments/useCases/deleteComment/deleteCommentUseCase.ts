@@ -1,9 +1,9 @@
-import { inject, injectable } from "tsyringe";
-import { ICommentsRepositories } from "@modules/comments/iRepositories/ICommentsRepositories";
-import { IUuidProvider } from "@shared/container/providers/uuidProvider/IUuidProvider";
-import { IPostsRepositories } from "@modules/posts/iRepositories/IPostsRepositories";
-import { AppResponse } from "@helpers/responseParser";
 import { AppError } from "@helpers/errorsHandler";
+import { AppResponse } from "@helpers/responseParser";
+import { ICommentsRepositories } from "@modules/comments/iRepositories/ICommentsRepositories";
+import { IPostsRepositories } from "@modules/posts/iRepositories/IPostsRepositories";
+import { IUuidProvider } from "@shared/container/providers/uuidProvider/IUuidProvider";
+import { inject, injectable } from "tsyringe";
 
 interface IRequest {
   usrId: string;
@@ -47,7 +47,7 @@ class DeleteCommentUseCase {
 
     if (!listPostById) {
       throw new AppError({
-        message: "Post não encontrado",
+        message: "Post não encontrado!",
       });
     }
 

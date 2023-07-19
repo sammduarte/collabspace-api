@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "star": "node build/server.js",
+    "start": "node build/server.js",
     "build": "tsup src --out-dir build"
   },
   "devDependencies": {

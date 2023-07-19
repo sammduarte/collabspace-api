@@ -7,8 +7,8 @@ import { AppResponse } from "@helpers/responseParser";
 import { AppError } from "@helpers/errorsHandler";
 
 interface IRequest extends IRequestCreateComment {
-  usrId: string;
   postId: string;
+  usrId: string;
 }
 
 @injectable()

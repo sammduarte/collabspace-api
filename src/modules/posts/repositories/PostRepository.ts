@@ -56,6 +56,34 @@ class PostRepository implements IPostsRepositories {
                 avatar_url: true,
               },
             },
+            reactions: {
+              select: {
+                id: true,
+                entity_type: true,
+                reacted_at: true,
+                users: {
+                  select: {
+                    id: true,
+                    name: true,
+                    avatar_url: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+        reactions: {
+          select: {
+            id: true,
+            entity_type: true,
+            reacted_at: true,
+            users: {
+              select: {
+                id: true,
+                name: true,
+                avatar_url: true,
+              },
+            },
           },
         },
       },
