@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { IFriendsRepositories } from "../iRepositories/IFriendsRepositories";
+import { IFriendsRepositories } from "../../iRepositories/IFriendsRepositories";
 import { IUuidProvider } from "@shared/container/providers/uuidProvider/IUuidProvider";
 import { IUsersRepositories } from "@modules/users/iRepositories/IUsersRepositories";
 import { EnumFriendActions } from "src/enums/friendActions";
