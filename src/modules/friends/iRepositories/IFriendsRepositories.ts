@@ -5,6 +5,7 @@ interface IFriendsRepositories {
   listById(id: string): Promise<IFriend | null>;
   listAlreadyExists(userId1: string, userId2: string): Promise<IFriend | null>;
   updateActionStatus(data: IUpdateActionStatus): Promise<void>;
+  delete(id: string): Promise<void>;
 }
 
 export { IFriendsRepositories };
