@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { AcceptRequestUseCase } from "./acceptRequestUseCase";
+import { RecuseRequestUseCase } from "./recuseRequestUseCase";
 
-class AcceptRequestController {
+class RecuseRequestController {
   async handle(request: Request, response: Response) {
     const { usrId } = request;
     const { id } = request.params as { id: string };
 
-    const acceptRequestUseCase = container.resolve(AcceptRequestUseCase);
+    const recuseRequestUseCase = container.resolve(RecuseRequestUseCase);
 
-    const result = await acceptRequestUseCase.execute({
+    const result = await recuseRequestUseCase.execute({
       usrId,
       id,
     });
@@ -18,4 +18,4 @@ class AcceptRequestController {
   }
 }
 
-export { AcceptRequestController };
+export { RecuseRequestController };
