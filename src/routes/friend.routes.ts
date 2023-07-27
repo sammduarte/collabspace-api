@@ -8,11 +8,16 @@ import { CancelRequestController } from "@modules/friends/useCases/cancelRequest
 import { AcceptRequestController } from "@modules/friends/useCases/acceptRequest/acceptRequestController";
 import { RecuseRequestController } from "@modules/friends/useCases/recuseRequest/recuseRequestController";
 import { DeleteFriendController } from "@modules/friends/useCases/deleteFriend/deleteFriendController";
+import { ListAllFriendsByUserController } from "@modules/friends/useCases/listAllFriendsByUser/listAllFriendsByUserController";
 
 const friendRoutes = Router();
 
 friendRoutes.use(authentication);
 
+friendRoutes.get(
+  "/listAllFriends",
+  new ListAllFriendsByUserController().handle
+);
 friendRoutes.post("/:targetId", new CreateFriendController().handle);
 friendRoutes.patch("/cancelRequest/:id", new CancelRequestController().handle);
 friendRoutes.patch("/acceptRequest/:id", new AcceptRequestController().handle);
