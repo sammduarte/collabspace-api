@@ -9,6 +9,7 @@ import { AcceptRequestController } from "@modules/friends/useCases/acceptRequest
 import { RecuseRequestController } from "@modules/friends/useCases/recuseRequest/recuseRequestController";
 import { DeleteFriendController } from "@modules/friends/useCases/deleteFriend/deleteFriendController";
 import { ListAllFriendsByUserController } from "@modules/friends/useCases/listAllFriendsByUser/listAllFriendsByUserController";
+import { ListAllRequestsByUserController } from "@modules/friends/useCases/listAllRequestByUser/listAllRequestsByUserController";
 
 const friendRoutes = Router();
 
@@ -18,6 +19,12 @@ friendRoutes.get(
   "/listAllFriends",
   new ListAllFriendsByUserController().handle
 );
+
+friendRoutes.get(
+  "/listAllRequests",
+  new ListAllRequestsByUserController().handle
+);
+
 friendRoutes.post("/:targetId", new CreateFriendController().handle);
 friendRoutes.patch("/cancelRequest/:id", new CancelRequestController().handle);
 friendRoutes.patch("/acceptRequest/:id", new AcceptRequestController().handle);
