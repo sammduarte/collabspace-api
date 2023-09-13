@@ -80,7 +80,10 @@ class CreateReactionUseCase {
     const countReactionUserComment =
       await this.reactionRepository.countReactionUserComment(usrId, commentId);
 
-    if (countReactionUserPost || countReactionUserComment) {
+    if (
+      (postId && countReactionUserPost) ||
+      (commentId && countReactionUserComment)
+    ) {
       throw new AppError({
         message: "Você já reagiu a isso!",
       });
