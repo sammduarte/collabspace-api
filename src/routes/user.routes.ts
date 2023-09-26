@@ -6,6 +6,7 @@ import { InactivateUserController } from "@modules/users/useCases/inactivateUser
 
 import { authentication } from "src/middlewares/authentication";
 import { UpdateAvatarController } from "@modules/users/useCases/updateAvatar/updateAvatarController";
+import { UpdateCoverController } from "@modules/users/useCases/updateCover/updateCoverController";
 import { ListUserByIdController } from "@modules/users/useCases/listUserById/listUserByIdController";
 
 const userRoutes = Router();
@@ -17,6 +18,7 @@ userRoutes.use(authentication);
 userRoutes.get("/:id", new ListUserByIdController().handle);
 userRoutes.put("/", new UpdateUserController().handle);
 userRoutes.patch("/updateAvatar", new UpdateAvatarController().handle);
+userRoutes.patch("/updateCover", new UpdateCoverController().handle);
 userRoutes.delete("/", new InactivateUserController().handle);
 
 export { userRoutes };
