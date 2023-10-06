@@ -1,9 +1,9 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "@helpers/errorsHandler";
+import { AppResponse } from "@helpers/responseParser";
 import { IFriendsRepositories } from "@modules/friends/iRepositories/IFriendsRepositories";
 import { IUuidProvider } from "@shared/container/providers/uuidProvider/IUuidProvider";
 import { EnumFriendActions } from "src/enums/friendActions";
-import { AppResponse } from "@helpers/responseParser";
-import { AppError } from "@helpers/errorsHandler";
 
 interface IRequest {
   usrId: string;

@@ -8,6 +8,7 @@ import { DeleteReactionController } from "@modules/reactions/useCases/deleteReac
 const reactionRoutes = Router();
 
 reactionRoutes.use(authentication);
+
 reactionRoutes.post("/", new CreateReactionController().handle);
 reactionRoutes.delete("/:id", new DeleteReactionController().handle);
 

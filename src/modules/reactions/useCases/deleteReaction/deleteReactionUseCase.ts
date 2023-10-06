@@ -21,7 +21,7 @@ class DeleteReactionUseCase {
   async execute({ usrId, id }: IRequest): Promise<AppResponse> {
     if (!this.uuidProvider.validateUUID(id)) {
       throw new AppError({
-        message: "ID é inválido!",
+        message: "ID é invalido!",
       });
     }
 
@@ -29,14 +29,14 @@ class DeleteReactionUseCase {
 
     if (!listReactionById) {
       throw new AppError({
-        message: "Reacção não encontrada!",
+        message: "Reação não encontrada!",
       });
     }
 
     if (usrId !== listReactionById.user_id) {
       throw new AppError({
         statusCode: 401,
-        message: "Operação não permitida!",
+        message: "Operaçao não permitida!",
       });
     }
 

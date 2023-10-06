@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
-import { IFriendsRepositories } from "../../iRepositories/IFriendsRepositories";
+import { IFriendsRepositories } from "@modules/friends/iRepositories/IFriendsRepositories";
 import { IUuidProvider } from "@shared/container/providers/uuidProvider/IUuidProvider";
-import { IUsersRepositories } from "@modules/users/iRepositories/IUsersRepositories";
-import { EnumFriendActions } from "src/enums/friendActions";
 import { AppResponse } from "@helpers/responseParser";
+import { IUsersRepositories } from "@modules/users/iRepositories/IUsersRepositories";
 import { AppError } from "@helpers/errorsHandler";
+import { EnumFriendActions } from "src/enums/friendActions";
 
 interface IRequest {
   usrId: string;
@@ -25,7 +25,7 @@ class CreateFriendUseCase {
   async execute({ usrId, targetId }: IRequest): Promise<AppResponse> {
     if (!this.uuidProvider.validateUUID(targetId)) {
       throw new AppError({
-        message: "ID é inválido!",
+        message: "ID inválido!",
       });
     }
 

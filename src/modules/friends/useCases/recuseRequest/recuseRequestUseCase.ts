@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "@helpers/errorsHandler";
+import { AppResponse } from "@helpers/responseParser";
 import { IFriendsRepositories } from "@modules/friends/iRepositories/IFriendsRepositories";
 import { IUuidProvider } from "@shared/container/providers/uuidProvider/IUuidProvider";
-import { AppResponse } from "@helpers/responseParser";
-import { AppError } from "@helpers/errorsHandler";
 import { EnumFriendActions } from "src/enums/friendActions";
 
 interface IRequest {
@@ -22,7 +22,7 @@ class RecuseRequestUseCase {
   async execute({ usrId, id }: IRequest): Promise<AppResponse> {
     if (!this.uuidProvider.validateUUID(id)) {
       throw new AppError({
-        message: "ID é inválido!",
+        message: "ID inválido!",
       });
     }
 

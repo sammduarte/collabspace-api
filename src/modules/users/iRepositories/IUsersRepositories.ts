@@ -1,7 +1,7 @@
 import {
   ICreateUser,
   IUpdateUser,
-  IUpdateUserAtavar,
+  IUpdateUserAvatar,
   IUpdateUserCover,
   IUser,
 } from "@modules/users/dtos/users";
@@ -11,7 +11,7 @@ interface IUsersRepositories {
   listByEmail(email: string): Promise<IUser | null>;
   listById(id: string): Promise<IUser | null>;
   update(data: IUpdateUser): Promise<void>;
-  updateAvatar(data: IUpdateUserAtavar): Promise<void>;
+  updateAvatar(data: IUpdateUserAvatar): Promise<void>;
   updateCover(data: IUpdateUserCover): Promise<void>;
   inactivate(id: string, status: boolean): Promise<void>;
 }

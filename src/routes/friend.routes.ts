@@ -16,12 +16,12 @@ const friendRoutes = Router();
 friendRoutes.use(authentication);
 
 friendRoutes.get(
-  "/listAllFriends",
+  "/listAllFriends/:id",
   new ListAllFriendsByUserController().handle
 );
 
 friendRoutes.get(
-  "/listAllRequests",
+  "/listAllRequests/:id",
   new ListAllRequestsByUserController().handle
 );
 

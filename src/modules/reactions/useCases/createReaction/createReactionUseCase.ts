@@ -45,7 +45,7 @@ class CreateReactionUseCase {
     if (postId) {
       if (!this.uuidProvider.validateUUID(postId)) {
         throw new AppError({
-          message: "PostID é inválido!",
+          message: "PostID inválido!",
         });
       }
 
@@ -61,7 +61,7 @@ class CreateReactionUseCase {
     if (commentId) {
       if (!this.uuidProvider.validateUUID(commentId)) {
         throw new AppError({
-          message: "CommentID é inválido!",
+          message: "CommentID inválido!",
         });
       }
 
@@ -85,7 +85,7 @@ class CreateReactionUseCase {
       (commentId && countReactionUserComment)
     ) {
       throw new AppError({
-        message: "Você já reagiu a isso!",
+        message: "Você já reagiu a isto!",
       });
     }
 

@@ -26,7 +26,7 @@ class CreatePostUseCase {
   }: IRequest): Promise<AppResponse> {
     if (!this.uuidProvider.validateUUID(userId)) {
       throw new AppError({
-        message: "User ID é inválido!",
+        message: "User ID inválido!",
       });
     }
 
@@ -54,7 +54,7 @@ class CreatePostUseCase {
           email: createPost.users?.email,
           avatarUrl: createPost.users?.avatar_url,
         },
-        comment: [],
+        comments: [],
         reactions: [],
       },
     });
