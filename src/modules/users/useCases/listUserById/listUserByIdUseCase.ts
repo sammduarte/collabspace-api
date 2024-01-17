@@ -36,6 +36,7 @@ class ListUserByIdUseCase {
       coverUrl: listUserById?.cover_url,
       bio: listUserById?.bio,
       createdAt: listUserById?.created_at,
+      address: listUserById?.address,
     };
 
     return new AppResponse({

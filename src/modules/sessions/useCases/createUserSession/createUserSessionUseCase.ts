@@ -61,6 +61,7 @@ class CreateUserSessionUseCase {
           id: listUserByEmail.id,
           name: listUserByEmail.name,
           email: listUserByEmail.email,
+          bio: listUserByEmail.bio,
           telephone: listUserByEmail.telephone,
           birthDate: listUserByEmail.birth_date,
           avatarUrl: listUserByEmail.avatar_url,
